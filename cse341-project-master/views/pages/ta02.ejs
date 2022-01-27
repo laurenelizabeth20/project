@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <form method="POST" action="/ta02/addUser">
+          <label for="username">Username:</label>
+          <input id="username" type="text" name="username">
+          <button type= "submit"> Add User</button>
+        </form><hr>
+
+        <form method="POST" action="/ta02/removeUser">
+          <label for="removename">Username:</label>
+          <input id="removename" type="text" name="removename">
+          <button type= "submit"> Remove User</button>
+        </form>
+      </div>
+    </div>
+    <% if( users.length > 0 ) {%>
+    <div class="container">
+      <ul>
+      <% for(let user of users){ %>
+        <li><%= user.username %></li>
+      <% } %>
+      </ul>
+      <% } else { %>
+        <h2>No users found!</h2>
+      <% } %>
+      </div>
+
+</body>
+
+</html>
